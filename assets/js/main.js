@@ -859,7 +859,6 @@ function initTheme() {
   const root = document.documentElement;
   const menu = document.getElementById("paletteMenu");
   const btn = document.getElementById("paletteBtn");
-  const modeBtn = document.getElementById("modeBtn");
 
   menu.innerHTML = PALETTES.map((p) => `
     <button role="menuitemradio" data-palette="${p.id}" aria-checked="false">
@@ -875,17 +874,12 @@ function initTheme() {
   menu.addEventListener("click", (e) => {
     const b = e.target.closest("button[data-palette]");
     if (!b) return;
-    setTheme(b.dataset.palette, root.getAttribute("data-theme") || "dark");
+    setTheme(b.dataset.palette, "dark");
     menu.classList.remove("is-open");
     btn.setAttribute("aria-expanded", "false");
   });
   document.addEventListener("click", () => { menu.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); });
-  modeBtn.addEventListener("click", () => {
-    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    setTheme(root.getAttribute("data-palette") || "botanical", next);
-  });
-
-  setTheme(root.getAttribute("data-palette") || "botanical", root.getAttribute("data-theme") || "dark");
+  setTheme(root.getAttribute("data-palette") || "botanical", "dark");
 }
 
 
