@@ -859,6 +859,11 @@ function initTheme() {
   const root = document.documentElement;
   const menu = document.getElementById("paletteMenu");
   const btn = document.getElementById("paletteBtn");
+  // the page must still render if the palette control is absent
+  if (!menu || !btn) {
+    setTheme(root.getAttribute("data-palette") || "botanical", "dark");
+    return;
+  }
 
   menu.innerHTML = PALETTES.map((p) => `
     <button role="menuitemradio" data-palette="${p.id}" aria-checked="false">
