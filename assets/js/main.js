@@ -10,7 +10,7 @@
    ========================================================== */
 
 const DELIVERABLES = [
-  { title: "Project Information Form",        file: null, date: "", size: "" },
+  { title: "Project Information Form",        file: "docs/project-information-form.pdf", date: "Oct 24 2026", size: "303 KB" },
   { title: "Project Specification Document",  file: null, date: "", size: "" },
   { title: "Analysis and Requirements Report", file: null, date: "", size: "" },
   { title: "Demo Presentation",               file: null, date: "", size: "" },
@@ -54,7 +54,7 @@ function renderDeliverables() {
       ? [d.date && `Added: ${d.date}`, d.size && `Size: ${d.size}`].filter(Boolean).join(" · ")
       : "Will be added when available";
     const action = ready
-      ? `<a class="deliverable__action" href="${d.file}" target="_blank" rel="noopener" download>Download</a>`
+      ? `<a class="deliverable__action" href="${d.file}" target="_blank" rel="noopener">Open PDF</a>`
       : `<em class="badge">Coming soon</em>`;
     return `
       <li class="deliverable reveal${ready ? " is-ready" : ""}">
